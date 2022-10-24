@@ -6,17 +6,17 @@ const Profile = () => {
   const user = {};
   return (
     <div className="flex justify-center mt-20">
-      <div className="max-w-lg p-8 sm:flex sm:space-x-6 bg-gray-100 text-gray-900">
+      <div className="max-w-lg p-8 sm:flex sm:space-x-6 bg-cyan-100 text-cyan-900">
         <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
           <div className="flex flex-col items-center justify-center">
             <div className="flex flex-wrap gap-x-2 gap-y-2">
               <div className="relative flex-shrink-0">
-                <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-600 border rounded-full text-gray-100 border-gray-900"></span>
+                <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-600 border rounded-full text-cyan-100 border-cyan-900"></span>
                 <img
                   src={user?.photoURL ? user.photoURL : avatarImg}
                   referrerPolicy="no-referrer"
                   alt=""
-                  className=" border w-32 h-32 rounded-full bg-gray-500 border-gray-700"
+                  className=" border w-32 h-32 rounded-full bg-cyan-500 border-cyan-700"
                 />
               </div>
             </div>
@@ -41,16 +41,16 @@ const Profile = () => {
                   d="M274.6,25.623a32.006,32.006,0,0,0-37.2,0L16,183.766V496H496V183.766ZM464,402.693,339.97,322.96,464,226.492ZM256,51.662,454.429,193.4,311.434,304.615,256,268.979l-55.434,35.636L57.571,193.4ZM48,226.492,172.03,322.96,48,402.693ZM464,464H48V440.735L256,307.021,464,440.735Z"
                 ></path>
               </svg>
-              <span className="text-gray-700">{user?.email}</span>
+              <span className="text-cyan-700">{user?.email}</span>
             </span>
             <span className="flex items-center space-x-2 w-full">
-              <span className="text-gray-400 text-small">
+              <span className="text-cyan-400 text-small">
                 {" "}
                 Email Status: <span className="text-green-400">Undefined</span>
               </span>
             </span>
             <span className="flex items-center space-x-2 w-full">
-              <span className="text-gray-400 text-small w-full">
+              <span className="text-cyan-400 text-small w-full">
                 {" "}
                 ID: {user?.uid}
               </span>
