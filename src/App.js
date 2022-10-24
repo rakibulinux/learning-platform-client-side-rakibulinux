@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 const App = () => {
   return (
-    <div>
-      <h1>I am from app</h1>
+    <div className="flex justify-center items-center min-h-screen">
+      <h1 className="text-3xl">Welcome to Rakib Courses</h1>
     </div>
   );
 };
