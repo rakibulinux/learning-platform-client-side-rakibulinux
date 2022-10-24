@@ -45,6 +45,22 @@ const Navbar = () => {
             Courses
           </NavLink>
           <NavLink
+            to="/faq"
+            aria-label="FAQ"
+            title="FAQ"
+            className="mr-5 hover:text-cyan-900"
+          >
+            FAQ
+          </NavLink>
+          <NavLink
+            to="/blog"
+            aria-label="Blog"
+            title="Blog"
+            className="mr-5 hover:text-cyan-900"
+          >
+            Blog
+          </NavLink>
+          <NavLink
             to="/profile"
             aria-label="Profile"
             title="Profile"
