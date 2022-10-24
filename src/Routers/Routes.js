@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog";
+import Course from "../components/Course";
 import Courses from "../components/Courses";
 import ErrorPage from "../components/ErrorPage";
 import Faq from "../components/Faq";
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
         element: <Courses />,
         loader: () =>
           fetch("https://rakib-learning-platform-server.vercel.app/courses"),
+      },
+      {
+        path: "/course/:id",
+        element: <Course />,
+        loader: ({ params }) =>
+          fetch(
+            `https://rakib-learning-platform-server.vercel.app/courses/${params.id}`
+          ),
       },
       {
         path: "/profile",
