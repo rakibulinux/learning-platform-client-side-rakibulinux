@@ -1,9 +1,11 @@
 import React from "react";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import router from "./Routers/Routes";
 const App = () => {
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <h1 className="text-3xl">Welcome to Rakib Courses</h1>
+      <RouterProvider router={router} />
     </div>
   );
 };
