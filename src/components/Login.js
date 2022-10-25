@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import toast from "react-hot-toast";
 
@@ -10,6 +10,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const { email, password } = userInfo;
 
   const handleEmailChange = (e) => {
@@ -25,6 +28,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success(user.displayName);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);

@@ -9,7 +9,7 @@ import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Register from "../components/Register";
 import Main from "../layout/Main";
-
+import PrivateRoutes from "../Routers/PrivateRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +40,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoutes>
+            <Profile />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/faq",

@@ -74,17 +74,16 @@ const Navbar = () => {
           >
             Blog
           </NavLink>
-          <NavLink
-            to="/profile"
-            aria-label="Profile"
-            title="Profile"
-            className="mr-5 hover:text-cyan-900"
-          >
-            Profile
-          </NavLink>
-
           {user?.uid ? (
             <>
+              <NavLink
+                to="/profile"
+                aria-label="Profile"
+                title="Profile"
+                className="mr-5 hover:text-cyan-900"
+              >
+                Profile
+              </NavLink>
               <button
                 onClick={handleLogOut}
                 className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0"
