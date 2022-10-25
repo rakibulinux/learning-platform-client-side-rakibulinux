@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog";
 import Course from "../components/Course";
+import CourseDetails from "../components/CourseDetails";
 import Courses from "../components/Courses";
 import ErrorPage from "../components/ErrorPage";
 import Faq from "../components/Faq";
 import Home from "../components/Home";
+import LeftSide from "../components/LeftSide";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Register from "../components/Register";
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      // {
+      //   path: "/category/:id",
+      //   element: <LeftSide />,
+      //   loader: ({ params }) =>
+      //     fetch(
+      //       `https://rakib-learning-platform-server.vercel.app/categories/${params.id}`
+      //     ),
+      // },
       {
         path: "/courses",
         element: <Courses />,
@@ -32,10 +42,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/course/:id",
-        element: <Course />,
+        element: <CourseDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://rakib-learning-platform-server.vercel.app/courses/${params.id}`
+            `https://rakib-learning-platform-server.vercel.app/course/${params.id}`
           ),
       },
       {
