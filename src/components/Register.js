@@ -1,6 +1,88 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    photoURL: "",
+    email: "",
+    password: "",
+  });
+  const { name, photoURL, email, password } = userInfo;
+
+  const {
+    createUserAccount,
+    verifyUserEmail,
+    updateUserProfile,
+    loginWithGoogle,
+    loginWithGitHub,
+  } = useContext(AuthContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUserAccount(email, password)
+      .then((result) => {
+        const user = result.user;
+        verifyUserEmail()
+          .then((result) => {
+            toast.success("Please verify your email address");
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
+        updateUserProfile()
+          .then((result) => {
+            toast.success("Profile updated");
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
+        console.log(user);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        toast.success("Signin Success with Google");
+        console.log(user);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+  const handleGithubLogin = () => {
+    loginWithGitHub()
+      .then((result) => {
+        const user = result.user;
+        toast.success("Signin Success With GitHub");
+        console.log(user);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleNameChange = (e) => {
+    setUserInfo({ ...userInfo, name: e.target.value });
+  };
+  const handlePhotoURLChange = (e) => {
+    setUserInfo({ ...userInfo, photoURL: e.target.value });
+  };
+  const handleEmailChange = (e) => {
+    setUserInfo({ ...userInfo, email: e.target.value });
+  };
+  const handlePasswordChange = (e) => {
+    setUserInfo({ ...userInfo, password: e.target.value });
+  };
+
+  // console.log(userInfo);
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-cyan-100 text-cyan-900">
@@ -9,6 +91,7 @@ const Register = () => {
           <p className="text-sm text-cyan-400">Create a new account</p>
         </div>
         <form
+          onSubmit={handleSubmit}
           noValidate=""
           action=""
           className="space-y-12 ng-untouched ng-pristine ng-valid"
@@ -19,6 +102,8 @@ const Register = () => {
                 Name
               </label>
               <input
+                value={userInfo.name}
+                onChange={handleNameChange}
                 type="text"
                 name="name"
                 id="name"
@@ -29,9 +114,26 @@ const Register = () => {
             </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
+                PhotoURL
+              </label>
+              <input
+                value={userInfo.photoURL}
+                onChange={handlePhotoURLChange}
+                type="text"
+                name="photoURL"
+                id="photoURL"
+                placeholder="Enter Your PhotoURL"
+                className="w-full px-3 py-2 border rounded-md border-cyan-300 focus:border-cyan-900 bg-cyan-200 text-cyan-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
               </label>
               <input
+                value={userInfo.email}
+                onChange={handleEmailChange}
                 type="email"
                 name="email"
                 id="email"
@@ -47,6 +149,8 @@ const Register = () => {
                 </label>
               </div>
               <input
+                value={userInfo.password}
+                onChange={handlePasswordChange}
                 type="password"
                 name="password"
                 id="password"
@@ -74,7 +178,11 @@ const Register = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-cyan-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleLogin}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -83,16 +191,12 @@ const Register = () => {
               <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
             </svg>
           </button>
-          <button aria-label="Log in with Twitter" className="p-3 rounded-sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 32 32"
-              className="w-5 h-5 fill-current"
-            >
-              <path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
-            </svg>
-          </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+
+          <button
+            onClick={handleGithubLogin}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -102,12 +206,11 @@ const Register = () => {
             </svg>
           </button>
         </div>
-        <p className="px-6 text-sm text-center text-cyan-400">
-          Already have an account yet?{" "}
-          <a href="#" className="hover:underline text-cyan-600">
+        <p className="px-6 text-sm text-center text-cyan-600">
+          Already have an account yet?
+          <Link to="/login" className="hover:underline text-cyan-900 ml-2">
             Sign In
-          </a>
-          .
+          </Link>
         </p>
       </div>
     </div>

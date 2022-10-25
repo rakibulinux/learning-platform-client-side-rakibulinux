@@ -1,12 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog";
-import Course from "../components/Course";
 import CourseDetails from "../components/CourseDetails";
 import Courses from "../components/Courses";
 import ErrorPage from "../components/ErrorPage";
 import Faq from "../components/Faq";
 import Home from "../components/Home";
-import LeftSide from "../components/LeftSide";
 import Login from "../components/Login";
 import Profile from "../components/Profile";
 import Register from "../components/Register";

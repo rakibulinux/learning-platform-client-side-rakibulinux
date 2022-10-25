@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
   const [isDark, setIsDark] = useState(false);
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then((result) => {
+        toast.success("Successfully LogOut");
+        console.log(result);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <header className="text-cyan-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -69,7 +83,10 @@ const Navbar = () => {
             Profile
           </NavLink>
 
-          <button className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0">
+          <button
+            onClick={handleLogOut}
+            className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0"
+          >
             Logout
             <svg
               fill="none"
