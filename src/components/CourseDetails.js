@@ -17,8 +17,10 @@ const CourseDetails = () => {
           <div>
             <h2 className="text-3xl my-5">{title}</h2>
             <p>{details}</p>
-            <Link to={`/courses`}>
-              <button>View All Courses</button>
+            <Link className="text-center" to={`/courses`}>
+              <button className="bg-cyan-900 text-cyan-50 p-2 rounded-md my-5">
+                View All Courses
+              </button>
             </Link>
           </div>
         </div>
