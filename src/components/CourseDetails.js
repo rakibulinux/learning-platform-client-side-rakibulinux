@@ -12,7 +12,7 @@ const CourseDetails = () => {
         <LeftSide />
       </div>
       <div className="grid grid-cols-1 gap-4">
-        <div>
+        <div className="flex justify-center flex-col">
           <img src={image_url} alt="" />
           <div>
             <h2 className="text-3xl my-5">{title}</h2>

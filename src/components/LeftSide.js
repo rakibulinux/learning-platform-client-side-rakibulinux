@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const LeftSide = () => {
@@ -8,9 +8,17 @@ const LeftSide = () => {
   console.log(categories);
   return (
     <div>
+      <h1 className="p-2 text-2xl">Course Topics:</h1>
       {categories.map((category) => (
-        <p key={category.id}>
-          <Link to={`/course/${category.id}`}>{category.name}</Link>
+        <p className="p-2" key={category.id}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-cyan-800" : undefined
+            }
+            to={`/course/${category.id}`}
+          >
+            {category.name}
+          </NavLink>
         </p>
       ))}
     </div>
