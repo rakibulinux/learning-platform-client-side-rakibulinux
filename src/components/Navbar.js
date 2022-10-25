@@ -83,40 +83,47 @@ const Navbar = () => {
             Profile
           </NavLink>
 
-          <button
-            onClick={handleLogOut}
-            className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0"
-          >
-            Logout
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-4 h-4 ml-1"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          {user?.uid ? (
+            <>
+              <button
+                onClick={handleLogOut}
+                className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0"
+              >
+                Logout
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  className="w-4 h-4 ml-1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                aria-label="Login"
+                title="Login"
+                className="mr-5 hover:text-cyan-900"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                aria-label="Register"
+                title="Register"
+                className="mr-5 hover:text-cyan-900"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
 
-          <NavLink
-            to="/login"
-            aria-label="Login"
-            title="Login"
-            className="mr-5 hover:text-cyan-900"
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/register"
-            aria-label="Register"
-            title="Register"
-            className="mr-5 hover:text-cyan-900"
-          >
-            Register
-          </NavLink>
           <button
             aria-label="Dark Or Light"
             title="Dark Or Light"

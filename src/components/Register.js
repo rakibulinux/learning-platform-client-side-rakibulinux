@@ -32,7 +32,7 @@ const Register = () => {
           .catch((error) => {
             toast.error(error.message);
           });
-        updateUserProfile()
+        updateUserProfile(name, photoURL)
           .then((result) => {
             toast.success("Profile updated");
           })

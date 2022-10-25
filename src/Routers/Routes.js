@@ -24,14 +24,6 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
-      // {
-      //   path: "/category/:id",
-      //   element: <LeftSide />,
-      //   loader: ({ params }) =>
-      //     fetch(
-      //       `https://rakib-learning-platform-server.vercel.app/categories/${params.id}`
-      //     ),
-      // },
       {
         path: "/courses",
         element: <Courses />,

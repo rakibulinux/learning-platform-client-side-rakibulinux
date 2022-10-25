@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import avatarImg from "../assets/avatar.jpeg";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Profile = () => {
-  const user = {};
+  const { user } = useContext(AuthContext);
   return (
     <div className="flex justify-center mt-20">
-      <div className="max-w-lg p-8 sm:flex sm:space-x-6 bg-cyan-100 text-cyan-900">
+      <div className="max-w-lg p-8 sm:flex sm:space-x-6 bg-cyan-100 text-cyan-900 items-center h-[420px] mb-52">
         <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
           <div className="flex flex-col items-center justify-center">
             <div className="flex flex-wrap gap-x-2 gap-y-2">
@@ -46,7 +47,10 @@ const Profile = () => {
             <span className="flex items-center space-x-2 w-full">
               <span className="text-cyan-400 text-small">
                 {" "}
-                Email Status: <span className="text-green-400">Undefined</span>
+                Email Status:{" "}
+                <span className="text-green-400">
+                  {user?.emailVerified ? "Verified" : "Undefined"}
+                </span>
               </span>
             </span>
             <span className="flex items-center space-x-2 w-full">
