@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    photoURL: "",
-    email: "",
-    password: "",
-  });
-  const { name, photoURL, email, password } = userInfo;
-
   const {
     createUserAccount,
     verifyUserEmail,
@@ -19,6 +11,14 @@ const Register = () => {
     loginWithGoogle,
     loginWithGitHub,
   } = useContext(AuthContext);
+
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    photoURL: "",
+    email: "",
+    password: "",
+  });
+  const { name, photoURL, email, password } = userInfo;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +82,6 @@ const Register = () => {
     setUserInfo({ ...userInfo, password: e.target.value });
   };
 
-  // console.log(userInfo);
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-cyan-100 text-cyan-900">

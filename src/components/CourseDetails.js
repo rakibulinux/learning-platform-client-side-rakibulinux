@@ -16,7 +16,7 @@ const CourseDetails = () => {
   };
   return (
     <div className="courses ">
-      <div className="">
+      <div>
         <LeftSide />
       </div>
       <div className="grid grid-cols-1 gap-4 shadow-2xl p-4">

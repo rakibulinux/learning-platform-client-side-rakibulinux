@@ -4,8 +4,12 @@ import { AuthContext } from "../contexts/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { loginUserAccount, loginWithGoogle, loginWithGitHub } =
-    useContext(AuthContext);
+  const {
+    loginUserAccount,
+    loginWithGoogle,
+    loginWithGitHub,
+    resetUserPassword,
+  } = useContext(AuthContext);
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
@@ -57,6 +61,17 @@ const Login = () => {
         toast.error(error.message);
       });
   };
+
+  const handleResetPassword = () => {
+    resetUserPassword(email)
+      .then(() => {
+        toast.success("Please check your email to reset password");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-cyan-100 text-cyan-900">
@@ -86,6 +101,7 @@ const Login = () => {
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-cyan-300 focus:border-cyan-900 bg-cyan-200 text-cyan-900"
                 data-temp-mail-org="0"
+                required
               />
             </div>
             <div>
@@ -102,6 +118,7 @@ const Login = () => {
                 id="password"
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-cyan-300 bg-cyan-200 focus:border-cyan-900 text-cyan-900"
+                required
               />
             </div>
           </div>
@@ -116,7 +133,10 @@ const Login = () => {
           </div>
         </form>
         <div className="space-y-1">
-          <button className="text-xs hover:underline text-cyan-400">
+          <button
+            onClick={handleResetPassword}
+            className="text-xs hover:underline text-cyan-400"
+          >
             Forgot password?
           </button>
         </div>

@@ -11,6 +11,7 @@ const Course = ({ course }) => {
     rating: { number },
     author: { name, img },
   } = course;
+
   return (
     <div className="shadow-2xl">
       <div className="m-2">
