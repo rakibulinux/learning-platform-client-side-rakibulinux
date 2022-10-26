@@ -8,23 +8,23 @@ const ref = createRef();
 const CourseDetails = () => {
   const courseInfo = useLoaderData();
   console.log(courseInfo);
-  const { title, image_url, details } = courseInfo;
+  const { _id, title, image_url, details } = courseInfo;
   const options = {
     orientation: "landscape",
     unit: "in",
     format: [40, 20],
   };
   return (
-    <div className="courses">
+    <div className="courses ">
       <div className="">
         <LeftSide />
       </div>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 shadow-2xl p-4">
         <Pdf targetRef={ref} filename={`${title}`} options={options}>
           {({ toPdf }) => (
             <button
               onClick={toPdf}
-              className="bg-cyan-900 text-cyan-50 font-semibold py-2 w-32 mx-auto rounded-md"
+              className="bg-cyan-900 text-cyan-50 hover:bg-cyan-600 font-semibold py-2 w-32 mx-auto rounded-md"
             >
               Export to PDF
             </button>
@@ -35,11 +35,18 @@ const CourseDetails = () => {
           <div>
             <h2 className="text-3xl my-5">{title}</h2>
             <p>{details}</p>
-            <Link className="text-center" to={`/courses`}>
-              <button className="bg-cyan-900 text-cyan-50 p-2 rounded-md my-5">
-                View All Courses
-              </button>
-            </Link>
+            <div className="flex justify-center gap-4">
+              <Link className="text-center" to={`/courses`}>
+                <button className="bg-cyan-900 text-cyan-50 hover:bg-cyan-600 p-2 rounded-md my-5">
+                  View All Courses
+                </button>
+              </Link>
+              <Link className="text-center" to={`/checkout/${_id}`}>
+                <button className="bg-cyan-900 text-cyan-50 hover:bg-cyan-600 p-2 rounded-md my-5">
+                  Get premium access
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

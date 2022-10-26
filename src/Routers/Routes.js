@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog";
+import CheckOut from "../components/CheckOut";
 import CourseDetails from "../components/CourseDetails";
 import Courses from "../components/Courses";
 import ErrorPage from "../components/ErrorPage";
@@ -36,6 +37,18 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(
             `https://rakib-learning-platform-server.vercel.app/course/${params.id}`
+          ),
+      },
+      {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoutes>
+            <CheckOut />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://rakib-learning-platform-server.vercel.app/checkout/${params.id}`
           ),
       },
       {
