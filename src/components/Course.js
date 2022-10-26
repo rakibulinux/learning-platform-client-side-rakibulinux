@@ -51,7 +51,7 @@ const Course = ({ course }) => {
             Course Info
           </button>
         </Link>
-        <Link to={`/course/${_id}`}>
+        <Link to={`/checkout/${_id}`}>
           <button className="p-2 text-cyan-50 bg-cyan-900 rounded-md font-semibold">
             Buy Now
           </button>
