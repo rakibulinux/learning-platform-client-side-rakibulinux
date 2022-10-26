@@ -12,6 +12,9 @@ const CourseDetails = () => {
         <LeftSide />
       </div>
       <div className="grid grid-cols-1 gap-4">
+        <button className="bg-cyan-900 text-cyan-50 font-semibold py-2 w-32 mx-auto rounded-md">
+          Export to PDF
+        </button>
         <div className="flex justify-center flex-col">
           <img src={image_url} alt="" />
           <div>

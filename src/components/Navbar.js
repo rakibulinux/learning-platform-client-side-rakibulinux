@@ -6,6 +6,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [isDark, setIsDark] = useState(false);
+  // const [isHovering, setIsHovering] = useState(false);
 
   const handleLogOut = () => {
     logOutUser()
@@ -17,6 +18,11 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+
+  // const displayUserName = () => {
+  //   setIsHovering(true);
+  // };
+
   return (
     <header className="text-cyan-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -84,6 +90,13 @@ const Navbar = () => {
               >
                 Profile
               </NavLink>
+              <img
+                // onMouseOver={displayUserName}
+                src={user?.photoURL}
+                alt=""
+                title={user.displayName}
+                className="w-7 h-7 rounded-full mr-4"
+              />
               <button
                 onClick={handleLogOut}
                 className="inline-flex items-center bg-cyan-700 border-0 py-1 px-3 focus:outline-none hover:bg-cyan-600 rounded text-white mt-4 md:mt-0"
