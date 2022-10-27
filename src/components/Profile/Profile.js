@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import avatarImg from "../assets/avatar.jpeg";
-import { AuthContext } from "../contexts/AuthProvider";
+import avatarImg from "../../assets/avatar.jpeg";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);

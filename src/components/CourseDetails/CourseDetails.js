@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import LeftSide from "./LeftSide";
+import LeftSide from "../LeftSide/LeftSide";
 import Pdf from "react-to-pdf";
 
 const ref = createRef();
