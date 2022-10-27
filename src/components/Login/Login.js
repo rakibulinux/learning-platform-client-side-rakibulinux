@@ -41,10 +41,9 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     loginWithGoogle()
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
         toast.success("Signin Success with Google");
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -52,10 +51,9 @@ const Login = () => {
   };
   const handleGithubLogin = () => {
     loginWithGitHub()
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
         toast.success("Signin Success With GitHub");
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
