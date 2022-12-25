@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://rakib-learning-platform-server.vercel.app/checkout/${params.id}`
+            `https://rakib-learning-platform-server.vercel.app/course/${params.id}`
           ),
       },
       {

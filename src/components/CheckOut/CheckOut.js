@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const CheckOut = () => {
   const checkOutinfo = useLoaderData();
-  console.log(checkOutinfo);
   const { title, image_url, details } = checkOutinfo;
   return (
     <div className="w-9/12 mx-auto shadow-2xl p-4">
